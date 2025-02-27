@@ -85,7 +85,7 @@ Lietotājs var dzēst katru vēstures ierakstu. -->
             break;
         }
 
-        result = `${amount} ${fromCurrency} = ${convertedAmount} ${toCurrency}`;
+        result.innerHTML = `${amount} ${fromCurrency} = ${convertedAmount} ${toCurrency}`;
       }
 
       btn.addEventListener("click", handleClick);
