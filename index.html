@@ -1,0 +1,105 @@
+<!--
+=== NORĀDĪJUMI ===
+Darbs ir jānodod github.com vietnē ar nosaukumu “js-currency-calc-pd”.
+Katram kļūdas labojumam, refaktorēšanas solim vai jaunas funkcionalitātes izstrādes solim ir jābūt atsevišķā Git komitā, lai iespējams izsekot darba izstrādei gaitai. Piemēram, ja viss aplikācijas kods ir vienā komitā, tad darba izcelsme ir apšaubāma un darbu var nākties aizstāvēt.
+Praktiskās daļas laikā drīkst izmantot tikai devdocs.io vietni.
+Citi avoti (github.com, cits darbs uz datora) nav atļauti.
+
+=== UZDEVUMI ===
+1.uzd: Jāsalabo aplikācija, kas konvertē no vienas valūtas uz citu.
+2.uzd: Jāveic aplikācijas refaktorēšana, lai lietotāja ievades pārbaude (validācija) un konvertācija tiktu veiktas atsevišķās funkcijās.
+3.uzd: Papildināt aplikāciju ar jaunu funkcionalitāti “Vēsture”, kas saglabātu lietotāja veiktās darbības un izvadītu tās sarakstā zem rezultāta izvades.
+Vēsturei ir jāsaglabājas pēc lapas pārlādes.
+Katram vēstures ierakstam ir jasatur vārds (jāpievieno HTML markup-ā) un veiktās konvertācijas rezultāts.
+Lietotājs var dzēst katru vēstures ierakstu. -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Currency Calculator</title>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Valūtas kalkulātors</h1>
+      <label for="amount">Daudzums:</label>
+      <input type="number" id="amount" placeholder="Ievadi daudzumu" />
+
+      <br />
+
+      <label for="from-currency">No:</label>
+      <select id="from-currency">
+        <option value="EUR">EUR</option>
+        <option value="USD">USD</option>
+        <option value="GBP">GBP</option>
+      </select>
+
+      <label for="to-currency">Uz:</label>
+      <select id="to-currency">
+        <option value="EUR">EUR</option>
+        <option value="USD">USD</option>
+        <option value="GBP">GBP</option>
+      </select>
+
+      <br />
+
+      <button>Konvertēt</button>
+    </div>
+    <script>
+      const toCurrencyInput = document.getElementById("to-currency");
+      const btn = document.getElementById("convert-btn");
+      const amountInput = document.getElementById("amount");
+      const result = document.getElementById("result");
+
+      function handleClick() {
+        const fromCurrency = fromCurrencyInput.value;
+        const toCurrency = toCurrencyInput.value;
+        const amount = parseFloat(amountInput);
+
+        if (isNaN(amount) || amount <= 0) {
+          result.innerHTML = "Ievadi derīgu daudzumu";
+        }
+
+        let convertedAmount;
+        switch (toCurrency) {
+          case "USD":
+            convertedAmount =
+              amount * { EUR: 0.85, GBP: 0.75, USD: 1 }[toCurrency];
+            break;
+          case "EUR":
+            convertedAmount =
+              amount * { USD: 1.18, GBP: 0.88, EUR: 1 }[toCurrency];
+            break;
+          case "GBP":
+            convertedAmount =
+              amount * { USD: 1.33, EUR: 1.14, GBP: 1 }[toCurrency];
+            break;
+
+          default:
+            break;
+        }
+
+        result = `${amount} ${fromCurrency} = ${convertedAmount} ${toCurrency}`;
+      }
+
+      btn.addEventListener("click", handleClick);
+
+      //   === TERMINI un KODA PIEMĒRI ===
+      // input, button, id, class, script, const, let, document, querySelector, getElementById,
+      // addEventListener, click, value, parseFloat, length, array, push, join, includes, classList,
+      // innerHTML, add, remove, toggle, NaN, isNaN, return, switch..case, if..else,
+      // for, while, localStorage, style, color
+      // document.createElement, appendChild, removeChild,
+      // event, event.target, parentNode, Date.now()
+
+      //   for (let key in localStorage) {
+      //     console.log(localStorage.getItem(key));
+      //   }
+      //
+      // JSON.stringify
+      // JSON.parse
+
+    </script>
+  </body>
+</html>
