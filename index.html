@@ -64,12 +64,8 @@ Lietotājs var dzēst katru vēstures ierakstu. -->
         let toCurrency = toCurrencyInput.value;
         let amount = parseFloat(amountInput.value);
 
-        if (isNaN(amount) || amount <= 0) {
-          result.innerHTML = "Ievadi derīgu daudzumu";
-        }
-
-        let convertedAmount;
-        switch (toCurrency) {
+        let convertedAmount = 0;
+        switch (fromCurrency) {
           case "USD":
             convertedAmount =
               amount * { EUR: 0.85, GBP: 0.75, USD: 1 }[toCurrency];
@@ -94,6 +90,12 @@ Lietotājs var dzēst katru vēstures ierakstu. -->
         const items = document.createElement("li");
         items.innerHTML = "LOL";
         lists.appendChild(itmes);
+      }
+
+      function validate() {
+        if (isNaN(amount) || amount <= 0) {
+          result.innerHTML = "Ievadi derīgu daudzumu";
+        }
       }
 
       btn.addEventListener("click", handleClick);
