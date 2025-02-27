@@ -49,6 +49,7 @@ Lietotājs var dzēst katru vēstures ierakstu. -->
       <br />
       <br />
       <p id="result"></p>
+      <ul id="saraksts"></ul>
     </div>
     <script>
       const toCurrencyInput = document.getElementById("to-currency");
@@ -56,6 +57,7 @@ Lietotājs var dzēst katru vēstures ierakstu. -->
       const btn = document.getElementById("convert-btn");
       const amountInput = document.getElementById("amount");
       const result = document.getElementById("result");
+      const lists = document.getElementById("saraksts");
 
       function handleClick() {
         let fromCurrency = fromCurrencyInput.value;
@@ -86,6 +88,12 @@ Lietotājs var dzēst katru vēstures ierakstu. -->
         }
 
         result.innerHTML = `${amount} ${fromCurrency} = ${convertedAmount} ${toCurrency}`;
+      }
+
+      function history() {
+        const items = document.createElement("li");
+        items.innerHTML = "LOL";
+        lists.appendChild(itmes);
       }
 
       btn.addEventListener("click", handleClick);
