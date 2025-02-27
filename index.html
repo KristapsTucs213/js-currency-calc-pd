@@ -57,7 +57,7 @@ Lietotājs var dzēst katru vēstures ierakstu. -->
       const btn = document.getElementById("convert-btn");
       const amountInput = document.getElementById("amount");
       const result = document.getElementById("result");
-      const lists = document.getElementById("saraksts");
+      let lists = document.getElementById("saraksts");
 
       function handleClick() {
         let fromCurrency = fromCurrencyInput.value;
@@ -66,12 +66,6 @@ Lietotājs var dzēst katru vēstures ierakstu. -->
 
         validate(fromCurrency, toCurrency, amount);
         // calculate(fromCurrency, toCurrency, amount);
-      }
-
-      function history() {
-        const items = document.createElement("li");
-        items.innerHTML = "LOL";
-        lists.appendChild(itmes);
       }
 
       function validate(fromCurrency, toCurrency, amount) {
@@ -84,6 +78,7 @@ Lietotājs var dzēst katru vēstures ierakstu. -->
 
       function calculate(fromCurrency, toCurrency, amount) {
         let convertedAmount = 0;
+        let finalResult = " ";
         switch (fromCurrency) {
           case "USD":
             convertedAmount =
@@ -101,8 +96,15 @@ Lietotājs var dzēst katru vēstures ierakstu. -->
           default:
             break;
         }
+        finalResult = `${amount} ${fromCurrency} = ${convertedAmount} ${toCurrency}`;
+        result.innerHTML = finalResult;
+        history(finalResult);
+      }
 
-        result.innerHTML = `${amount} ${fromCurrency} = ${convertedAmount} ${toCurrency}`;
+      function history(paste) {
+        const itemi = document.createElement("li");
+        itemi.innerHTML = paste;
+        lists.appendChild(itemi);
       }
 
       btn.addEventListener("click", handleClick);
