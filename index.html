@@ -44,7 +44,9 @@ Lietotājs var dzēst katru vēstures ierakstu. -->
 
       <br />
 
-      <button>Konvertēt</button>
+      <button id="convert-btn">Konvertēt</button>
+
+      <br>
     </div>
     <script>
       const toCurrencyInput = document.getElementById("to-currency");
@@ -55,7 +57,7 @@ Lietotājs var dzēst katru vēstures ierakstu. -->
       function handleClick() {
         let fromCurrency = fromCurrencyInput.value;
         let toCurrency = toCurrencyInput.value;
-        let amount = parseFloat(amountInput);
+        let amount = parseFloat(amountInput.value);
 
         if (isNaN(amount) || amount <= 0) {
           result.innerHTML = "Ievadi derīgu daudzumu";
@@ -99,7 +101,6 @@ Lietotājs var dzēst katru vēstures ierakstu. -->
       //
       // JSON.stringify
       // JSON.parse
-
     </script>
   </body>
 </html>
