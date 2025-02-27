@@ -53,9 +53,9 @@ Lietotājs var dzēst katru vēstures ierakstu. -->
       const result = document.getElementById("result");
 
       function handleClick() {
-        const fromCurrency = fromCurrencyInput.value;
-        const toCurrency = toCurrencyInput.value;
-        const amount = parseFloat(amountInput);
+        let fromCurrency = fromCurrencyInput.value;
+        let toCurrency = toCurrencyInput.value;
+        let amount = parseFloat(amountInput);
 
         if (isNaN(amount) || amount <= 0) {
           result.innerHTML = "Ievadi derīgu daudzumu";
