@@ -104,6 +104,13 @@ Lietotājs var dzēst katru vēstures ierakstu. -->
         const itemi = document.createElement("li");
         itemi.innerHTML = paste;
         lists.appendChild(itemi);
+        localStorage.setItem(lists, itemi);
+        console.log(localStorage.getItem(lists, itemi));
+        // const podzina = document.createElement("button");
+        // podzina.value = "DeleteButton";
+        // for (let i = 0; i < lists.lenght; i++) {
+        //   itemi.appendChild(podzina);
+        // }
       }
 
       btn.addEventListener("click", handleClick);
